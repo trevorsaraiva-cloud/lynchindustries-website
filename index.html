@@ -7,7 +7,38 @@
 <img src="logo.png" alt="Lynch Industries Logo">
 </div></div>
 <section id="services"><div class="wrap"><div class="section-head"><div><div class="kicker">Services</div><h2>One dependable team.</h2></div><p>Clean communication, professional field work, and dependable support for commercial and residential projects.</p></div><div class="cards"><div class="card"><div class="icon">❄️🔥</div><h3>HVAC</h3><p>Heating, cooling, air conditioning, equipment support, installations, and service repair.</p></div><div class="card"><div class="icon">⚡</div><h3>Electrical</h3><p>Service calls, panels, lighting, rough-ins, new construction, and commercial finish work.</p></div><div class="card"><div class="icon">💧</div><h3>Plumbing</h3><p>Water heaters, fixtures, underground utilities, rough-ins, finals, service, and repairs.</p></div></div></div></section>
-<section id="quote"><div class="wrap quote"><div><div class="kicker">Start here</div><h2>Request a quote.</h2><p class="note">This preview form does not email yet. Next step is wiring it to Vercel + an email sender so requests go to both inboxes.</p></div><form class="form" onsubmit="alert('Form design is ready. Backend/email setup is the next step.'); return false;"><div class="grid"><div><label>Name</label><input required placeholder="Your name"></div><div><label>Phone</label><input required placeholder="Phone number"></div><div><label>Email</label><input type="email" placeholder="Email address"></div><div><label>Project Address</label><input placeholder="Town / address"></div><div><label>Service Needed</label><select><option>HVAC</option><option>Electrical</option><option>Plumbing</option><option>Commercial Project</option><option>Residential Project</option></select></div><div><label>Preferred Contact</label><select><option>Phone Call</option><option>Text</option><option>Email</option></select></div><div class="full"><label>Attach Photos / Files</label><input type="file" multiple></div><div class="full"><label>Describe the work</label><textarea placeholder="Tell us what you need done..."></textarea></div></div><button type="submit">Send Quote Request</button><div class="note">Payments and invoicing are handled separately through Jobber.</div></form></div></section>
+<section id="quote"><div class="wrap quote"><div><div class="kicker">Start here</div><h2>Request a quote.</h2><p class="note">This preview form does not email yet. Next step is wiring it to Vercel + an email sender so requests go to both inboxes.</p></div>id="quoteForm"> onsubmit="alert('Form design is ready. Backend/email setup is the next step.'); return false;"><div class="grid"><div><label>Name</label><input required placeholder="Your name"></div><div><label>Phone</label><input required placeholder="Phone number"></div><div><label>Email</label><input type="email" placeholder="Email address"></div><div><label>Project Address</label><input placeholder="Town / address"></div><div><label>Service Needed</label><select><option>HVAC</option><option>Electrical</option><option>Plumbing</option><option>Commercial Project</option><option>Residential Project</option></select></div><div><label>Preferred Contact</label><select><option>Phone Call</option><option>Text</option><option>Email</option></select></div><div class="full"><label>Attach Photos / Files</label><input type="file" multiple></div><div class="full"><label>Describe the work</label><textarea placeholder="Tell us what you need done..."></textarea></div></div><button type="submit">Send Quote Request</button><div class="note">Payments and invoicing are handled separately through Jobber.</div></form></div></section>
 <section id="about"><div class="wrap"><div class="section-head"><div><div class="kicker">About Us</div><h2>Built for clean communication and reliable field work.</h2></div><p>Lynch Industries provides HVAC, electrical, and plumbing services for residential and commercial customers throughout Eastern Pennsylvania and New Jersey. From service calls to full new-build scopes, the goal is simple: professional work and a smooth project from quote to closeout.</p></div></div></section>
 <section id="work"><div class="wrap"><div class="section-head"><div><div class="kicker">Past Work</div><h2>Project gallery.</h2></div><p>Real project photos from plumbing, electrical, HVAC, and new construction work.</p></div><div class="gallery"><a class="project big" href="images/underground-drainage-system.jpg"><img src="images/underground-drainage-system.jpg" alt="Underground drainage system"><div><span class="tag">PLUMBING</span><h3>Underground Drainage System</h3><p>Commercial underground drainage and utility piping rough-in.</p></div></a><a class="project" href="images/crawlspace-plumbing.jpg"><img src="images/crawlspace-plumbing.jpg" alt="Crawlspace plumbing"><div><span class="tag">PLUMBING</span><h3>Crawlspace Plumbing Rough-In</h3><p>Clean DWV piping below the structure.</p></div></a><a class="project" href="images/new-construction-rough-in.jpg"><img src="images/new-construction-rough-in.jpg" alt="New construction rough-in"><div><span class="tag">NEW BUILD</span><h3>New Construction Rough-In</h3><p>Below-grade plumbing and utility coordination.</p></div></a><a class="project" href="images/commercial-electrical-panel.jpg"><img src="images/commercial-electrical-panel.jpg" alt="Commercial electrical panel"><div><span class="tag">ELECTRICAL</span><h3>Commercial Electrical Panel</h3><p>Distribution and panel work for a commercial project.</p></div></a><a class="project" href="images/water-heater-installation.jpg"><img src="images/water-heater-installation.jpg" alt="Water heater installation"><div><span class="tag">HVAC / PLUMBING</span><h3>Water Heater Installation</h3><p>Finished mechanical room installation.</p></div></a></div></div></section>
-<section id="contact"><div class="wrap contact-box"><div class="kicker">Contact</div><h2>Call Lynch Industries.</h2><p><strong>Phone:</strong> <a style="color:#9ccaff" href="tel:4843745124">484-374-5124</a></p><p><strong>Email:</strong> <a style="color:#9ccaff" href="mailto:lynchindustries01@gmail.com">lynchindustries01@gmail.com</a></p><p><strong>Service Area:</strong> Eastern Pennsylvania & New Jersey</p></div></section></main><footer><div class="wrap">© 2026 Lynch Industries. HVAC • Electrical • Plumbing.</div></footer></body></html>
+<section id="contact"><div class="wrap contact-box"><div class="kicker">Contact</div><h2>Call Lynch Industries.</h2><p><strong>Phone:</strong> <a style="color:#9ccaff" href="tel:4843745124">484-374-5124</a></p><p><strong>Email:</strong> <a style="color:#9ccaff" href="mailto:lynchindustries01@gmail.com">lynchindustries01@gmail.com</a></p><p><strong>Service Area:</strong> Eastern Pennsylvania & New Jersey</p></div></section></main><footer><div class="wrap">© 2026 Lynch Industries. HVAC • Electrical • Plumbing.</div></footer><script>
+document.getElementById("quoteForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+
+  const data = {
+    name: form.querySelector('input[placeholder="Your name"]').value,
+    phone: form.querySelector('input[placeholder="Phone number"]').value,
+    email: form.querySelector('input[type="email"]').value,
+    address: form.querySelector('input[placeholder="Town / address"]').value,
+    service: form.querySelector('select').value,
+    contact: form.querySelectorAll('select')[1].value,
+    message: form.querySelector('textarea').value
+  };
+
+  const response = await fetch("/api/quote", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  });
+
+  if (response.ok) {
+    alert("Quote request sent successfully!");
+    form.reset();
+  } else {
+    alert("There was an error sending your request.");
+  }
+});
+</script></body></html>
