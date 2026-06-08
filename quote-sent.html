@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quote Request Sent | Lynch Industries</title>
+  <style>
+    :root {
+      --text: #f6f8fb;
+      --muted: #aab4c3;
+      --line: #263447;
+      --blue: #58a6ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at top left, #14243b 0, #07111f 38%, #05070b 100%);
+      color: var(--text);
+      font-family: Inter, Arial, sans-serif;
+      line-height: 1.5;
+      padding: 24px;
+    }
+
+    main {
+      width: min(680px, 100%);
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(255, 255, 255, .04);
+    }
+
+    img {
+      width: 76px;
+      height: 76px;
+      border-radius: 16px;
+      object-fit: cover;
+      display: block;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(34px, 6vw, 56px);
+      line-height: 1.04;
+      letter-spacing: -.03em;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 18px;
+      margin: 0 0 24px;
+    }
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--blue), #1d6fd7);
+      color: white;
+      text-decoration: none;
+      font-weight: 900;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <img src="logo.png" alt="Lynch Industries logo">
+    <h1>Quote request sent.</h1>
+    <p>Thanks. Lynch Industries received your request and will be in touch soon.</p>
+    <a href="/">Back to website</a>
+  </main>
+</body>
+</html>
