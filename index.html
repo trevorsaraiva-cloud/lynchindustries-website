@@ -229,6 +229,61 @@
 
     .card p { color: var(--muted); }
 
+    .experience {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(88, 166, 255, .12), rgba(249, 115, 22, .08)),
+        rgba(255, 255, 255, .025);
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .brand-wall {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .brand-tile {
+      min-height: 154px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(5, 9, 15, .58);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, .22);
+    }
+
+    .brand-name {
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: 0;
+      color: #fff;
+    }
+
+    .brand-name.brew {
+      color: #f5bf4f;
+    }
+
+    .brand-name.petco {
+      color: #77b8ff;
+    }
+
+    .brand-tile span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
     .gallery {
       display: grid;
       grid-template-columns: 1.15fr 1fr 1fr;
@@ -303,36 +358,64 @@
     }
 
     .quote {
+      position: relative;
+      z-index: 2;
       display: grid;
       grid-template-columns: .8fr 1.2fr;
       gap: 28px;
+      align-items: center;
     }
 
     .quote-copy {
       display: flex;
       flex-direction: column;
+      justify-content: center;
       min-height: 100%;
+      padding: 28px 0;
     }
 
-    .quote-visual {
+    .quote-copy .note {
+      max-width: 520px;
+    }
+
+    #quote {
       position: relative;
-      min-height: 285px;
-      margin-top: 28px;
-      border: 1px solid var(--line);
-      border-radius: 28px;
       overflow: hidden;
+      border-top: 1px solid rgba(156, 202, 255, .16);
+      border-bottom: 1px solid rgba(156, 202, 255, .16);
       background: #05070b;
-      box-shadow: 0 18px 44px rgba(0, 0, 0, .28);
+      isolation: isolate;
     }
 
-    .quote-visual::after {
+    #quote::before,
+    #quote::after {
       content: "";
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(180deg, rgba(5, 9, 15, .08), rgba(5, 9, 15, .78)),
-        linear-gradient(90deg, rgba(5, 9, 15, .48), rgba(5, 9, 15, .08));
+      pointer-events: none;
+    }
+
+    #quote::before {
       z-index: 1;
+      background: linear-gradient(90deg, rgba(5, 9, 15, .86) 0%, rgba(5, 9, 15, .64) 42%, rgba(5, 9, 15, .78) 100%);
+    }
+
+    #quote::after {
+      z-index: 3;
+      border: 1px solid rgba(156, 202, 255, .16);
+      border-left: 0;
+      border-right: 0;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06), inset 0 -1px 0 rgba(255, 255, 255, .04);
+    }
+
+    .quote-bg {
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(156, 202, 255, .18);
+      border-radius: 34px;
+      overflow: hidden;
+      z-index: 0;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, .32);
     }
 
     .quote-slide {
@@ -362,26 +445,30 @@
       animation-delay: 12s;
     }
 
-    .quote-visual-content {
-      position: absolute;
-      z-index: 2;
-      left: 22px;
-      right: 22px;
-      bottom: 20px;
+    .quote-proof {
+      display: block;
+      margin-top: 28px;
+      padding: 18px 20px;
+      max-width: 440px;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 22px;
+      background: rgba(5, 9, 15, .42);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, .2);
     }
 
-    .quote-visual-content b {
+    .quote-proof b {
       display: block;
-      margin: 12px 0 6px;
-      font-size: 22px;
+      margin: 10px 0 4px;
+      font-size: 20px;
       line-height: 1.1;
     }
 
-    .quote-visual-content span:last-child {
+    .quote-proof span:last-child {
       display: block;
       color: #d4dce8;
       font-size: 14px;
-      max-width: 320px;
+      line-height: 1.45;
     }
 
     @keyframes quoteSlide {
@@ -396,6 +483,13 @@
       border: 1px solid var(--line);
       border-radius: 28px;
       background: rgba(255, 255, 255, .04);
+    }
+
+    #quote .form {
+      background: rgba(8, 17, 32, .84);
+      border-color: rgba(156, 202, 255, .22);
+      box-shadow: 0 24px 64px rgba(0, 0, 0, .34);
+      backdrop-filter: blur(10px);
     }
 
     .grid {
@@ -489,11 +583,17 @@
       .hero-card img {
         height: 260px;
       }
-      .quote-visual {
-        min-height: 220px;
+      #quote::before {
+        background: rgba(5, 9, 15, .82);
+      }
+      .quote-bg {
+        inset: 12px;
+        border-radius: 24px;
       }
       .cards,
       .gallery { grid-template-columns: 1fr; }
+      .experience-grid,
+      .brand-wall { grid-template-columns: 1fr; }
       .project.big { min-height: 360px; }
       .grid { grid-template-columns: 1fr; }
       .section-head { display: block; }
@@ -557,20 +657,20 @@
     </section>
 
     <section id="quote">
+      <div class="quote-bg" aria-hidden="true">
+        <div class="quote-slide"></div>
+        <div class="quote-slide"></div>
+        <div class="quote-slide"></div>
+      </div>
       <div class="wrap quote">
         <div class="quote-copy">
           <div class="kicker">Start here</div>
           <h2>Request a quote.</h2>
           <p class="note">Fill this out and Lynch Industries will receive your request by email.</p>
-          <div class="quote-visual" aria-hidden="true">
-            <div class="quote-slide"></div>
-            <div class="quote-slide"></div>
-            <div class="quote-slide"></div>
-            <div class="quote-visual-content">
-              <span class="tag">FAST RESPONSE</span>
-              <b>Show us the job before we arrive.</b>
-              <span>Add a few photos with your request so the team can quote and plan the work faster.</span>
-            </div>
+          <div class="quote-proof">
+            <span class="tag">FAST RESPONSE</span>
+            <b>Show us the job before we arrive.</b>
+            <span>Add a few photos with your request so the team can quote and plan the work faster.</span>
           </div>
         </div>
         <div class="form">
@@ -615,13 +715,33 @@
         </div>
         <div class="gallery">
           <a class="project big" href="images/underground-drainage-system.jpg"><img src="images/underground-drainage-system.jpg" alt="Underground drainage system"><div><span class="tag">PLUMBING</span><h3>Underground Drainage System</h3><p>Commercial underground drainage and utility piping rough-in.</p></div></a>
-          <a class="project" href="images/crawlspace-plumbing.jpg"><img src="images/crawlspace-plumbing.jpg" alt="Crawlspace plumbing"><div><span class="tag">PLUMBING</span><h3>Crawlspace Plumbing Rough-In</h3><p>Clean DWV piping below the structure.</p></div></a>
-          <a class="project" href="images/new-construction-rough-in.jpg"><img src="images/new-construction-rough-in.jpg" alt="New construction rough-in"><div><span class="tag">NEW BUILD</span><h3>New Construction Rough-In</h3><p>Below-grade plumbing and utility coordination.</p></div></a>
+          <a class="project" href="images/crawlspace-plumbing.jpg"><img src="images/crawlspace-plumbing.jpg" alt="Commercial crawlspace plumbing"><div><span class="tag">PLUMBING</span><h3>Commercial Plumbing Rough-In</h3><p>Clean DWV piping below the structure.</p></div></a>
+          <a class="project" href="images/new-construction-rough-in.jpg"><img src="images/new-construction-rough-in.jpg" alt="Commercial new construction rough-in"><div><span class="tag">NEW BUILD</span><h3>New Construction Rough-In</h3><p>Below-grade plumbing and utility coordination.</p></div></a>
           <a class="project" href="images/commercial-electrical-panel.jpg"><img src="images/commercial-electrical-panel.jpg" alt="Commercial electrical panel"><div><span class="tag">ELECTRICAL</span><h3>Commercial Electrical Panel</h3><p>Distribution and panel work for a commercial project.</p></div></a>
-          <a class="project" href="images/water-heater-installation.jpg"><img src="images/water-heater-installation.jpg" alt="Water heater installation"><div><span class="tag">HVAC / PLUMBING</span><h3>Water Heater Installation</h3><p>Finished mechanical room installation.</p></div></a>
+          <a class="project" href="images/water-heater-installation.jpg"><img src="images/water-heater-installation.jpg" alt="Commercial mechanical room installation"><div><span class="tag">HVAC / PLUMBING</span><h3>Commercial Mechanical Room</h3><p>Finished mechanical room installation.</p></div></a>
         </div>
         <div class="work-actions">
           <a class="btn secondary" href="gallery.html">View All Work</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience" id="experience">
+      <div class="wrap experience-grid">
+        <div>
+          <div class="kicker">Commercial Experience</div>
+          <h2>Project work for recognizable locations.</h2>
+          <p class="note">Experience supporting service work, new builds, plumbing, electrical, HVAC, and project-based scopes for national retail and food service locations.</p>
+        </div>
+        <div class="brand-wall" aria-label="Project experience includes 7 Brew and Petco">
+          <div class="brand-tile">
+            <div class="brand-name brew">7 Brew</div>
+            <span>New-build electrical and plumbing support for drive-thru coffee locations.</span>
+          </div>
+          <div class="brand-tile">
+            <div class="brand-name petco">Petco</div>
+            <span>Commercial service work support for retail store locations.</span>
+          </div>
         </div>
       </div>
     </section>
