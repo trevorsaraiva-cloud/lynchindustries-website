@@ -139,7 +139,7 @@
       height: 360px;
       max-height: none;
       object-fit: cover;
-      object-position: 58% 42%;
+      object-position: 64% 34%;
       display: block;
     }
 
@@ -308,6 +308,88 @@
       gap: 28px;
     }
 
+    .quote-copy {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .quote-visual {
+      position: relative;
+      min-height: 285px;
+      margin-top: 28px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      overflow: hidden;
+      background: #05070b;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, .28);
+    }
+
+    .quote-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(5, 9, 15, .08), rgba(5, 9, 15, .78)),
+        linear-gradient(90deg, rgba(5, 9, 15, .48), rgba(5, 9, 15, .08));
+      z-index: 1;
+    }
+
+    .quote-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      animation: quoteSlide 18s infinite;
+    }
+
+    .quote-slide:nth-child(1) {
+      background-image: url("images/residential-hvac-air-handler.jpeg");
+      background-position: 58% 50%;
+      animation-delay: 0s;
+    }
+
+    .quote-slide:nth-child(2) {
+      background-image: url("images/residential-ac-condenser.jpg");
+      background-position: 44% 52%;
+      animation-delay: 6s;
+    }
+
+    .quote-slide:nth-child(3) {
+      background-image: url("images/commercial-tankless-water-heaters.jpeg");
+      background-position: 50% 50%;
+      animation-delay: 12s;
+    }
+
+    .quote-visual-content {
+      position: absolute;
+      z-index: 2;
+      left: 22px;
+      right: 22px;
+      bottom: 20px;
+    }
+
+    .quote-visual-content b {
+      display: block;
+      margin: 12px 0 6px;
+      font-size: 22px;
+      line-height: 1.1;
+    }
+
+    .quote-visual-content span:last-child {
+      display: block;
+      color: #d4dce8;
+      font-size: 14px;
+      max-width: 320px;
+    }
+
+    @keyframes quoteSlide {
+      0% { opacity: 0; transform: scale(1); }
+      6%, 30% { opacity: 1; transform: scale(1.02); }
+      36%, 100% { opacity: 0; transform: scale(1.06); }
+    }
+
     .form,
     .contact-box {
       padding: 28px;
@@ -386,6 +468,11 @@
       margin-top: 12px;
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      .quote-slide { animation: none; }
+      .quote-slide:first-child { opacity: 1; }
+    }
+
     footer {
       padding: 36px 0;
       color: var(--muted);
@@ -401,6 +488,9 @@
       }
       .hero-card img {
         height: 260px;
+      }
+      .quote-visual {
+        min-height: 220px;
       }
       .cards,
       .gallery { grid-template-columns: 1fr; }
@@ -468,10 +558,20 @@
 
     <section id="quote">
       <div class="wrap quote">
-        <div>
+        <div class="quote-copy">
           <div class="kicker">Start here</div>
           <h2>Request a quote.</h2>
           <p class="note">Fill this out and Lynch Industries will receive your request by email.</p>
+          <div class="quote-visual" aria-hidden="true">
+            <div class="quote-slide"></div>
+            <div class="quote-slide"></div>
+            <div class="quote-slide"></div>
+            <div class="quote-visual-content">
+              <span class="tag">FAST RESPONSE</span>
+              <b>Show us the job before we arrive.</b>
+              <span>Add a few photos with your request so the team can quote and plan the work faster.</span>
+            </div>
+          </div>
         </div>
         <div class="form">
           <form id="quoteForm">
