@@ -229,6 +229,61 @@
 
     .card p { color: var(--muted); }
 
+    .experience {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(88, 166, 255, .12), rgba(249, 115, 22, .08)),
+        rgba(255, 255, 255, .025);
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .brand-wall {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .brand-tile {
+      min-height: 154px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(5, 9, 15, .58);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, .22);
+    }
+
+    .brand-name {
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: 0;
+      color: #fff;
+    }
+
+    .brand-name.brew {
+      color: #f5bf4f;
+    }
+
+    .brand-name.petco {
+      color: #77b8ff;
+    }
+
+    .brand-tile span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
     .gallery {
       display: grid;
       grid-template-columns: 1.15fr 1fr 1fr;
@@ -494,6 +549,8 @@
       }
       .cards,
       .gallery { grid-template-columns: 1fr; }
+      .experience-grid,
+      .brand-wall { grid-template-columns: 1fr; }
       .project.big { min-height: 360px; }
       .grid { grid-template-columns: 1fr; }
       .section-head { display: block; }
@@ -622,6 +679,26 @@
         </div>
         <div class="work-actions">
           <a class="btn secondary" href="gallery.html">View All Work</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience" id="experience">
+      <div class="wrap experience-grid">
+        <div>
+          <div class="kicker">Commercial Experience</div>
+          <h2>Project work for recognizable locations.</h2>
+          <p class="note">Experience supporting service work, new builds, plumbing, electrical, HVAC, and project-based scopes for national retail and food service locations.</p>
+        </div>
+        <div class="brand-wall" aria-label="Project experience includes 7 Brew and Petco">
+          <div class="brand-tile">
+            <div class="brand-name brew">7 Brew</div>
+            <span>New-build electrical and plumbing support for drive-thru coffee locations.</span>
+          </div>
+          <div class="brand-tile">
+            <div class="brand-name petco">Petco</div>
+            <span>Commercial service work support for retail store locations.</span>
+          </div>
         </div>
       </div>
     </section>
