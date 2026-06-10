@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Gallery | Lynch Industries</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: #0d1726;
+      --text: #f6f8fb;
+      --muted: #aab4c3;
+      --line: #263447;
+      --blue: #58a6ff;
+      --gold: #f4b73e;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top left, #14243b 0, #07111f 38%, #05070b 100%);
+      color: var(--text);
+      font-family: Inter, Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    .wrap {
+      width: min(1160px, 92%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(5, 8, 13, .76);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: .04em;
+      color: white;
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .links a {
+      color: #dbe5f2;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--blue), #1d6fd7);
+      color: white !important;
+      padding: 12px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 900;
+      border: 1px solid rgba(255, 255, 255, .15);
+    }
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, .06);
+      border-color: rgba(156, 202, 255, .34);
+    }
+
+    .page-hero {
+      padding: 84px 0 54px;
+    }
+
+    .kicker {
+      color: #9ccaff;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(44px, 6vw, 78px);
+      line-height: 1.05;
+      margin: 18px 0;
+      letter-spacing: -.04em;
+    }
+
+    h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.08;
+      margin: 0 0 18px;
+      letter-spacing: -.03em;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 760px;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    section {
+      padding: 72px 0;
+      border-top: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 30px;
+    }
+
+    .section-head p {
+      max-width: 520px;
+      margin: 0;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .photo-card {
+      display: block;
+      min-height: 320px;
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #111;
+      color: white;
+      text-decoration: none;
+    }
+
+    .photo-card.feature {
+      grid-column: span 2;
+      min-height: 430px;
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+      transition: .35s;
+    }
+
+    .photo-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .photo-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, .02), rgba(0, 0, 0, .82));
+    }
+
+    .photo-card div {
+      position: absolute;
+      z-index: 2;
+      left: 22px;
+      right: 22px;
+      bottom: 20px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .18);
+      border: 1px solid rgba(255, 255, 255, .22);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
+
+    .photo-card h3 {
+      margin: 12px 0 4px;
+      font-size: 22px;
+    }
+
+    .photo-card p {
+      margin: 0;
+      color: #d4dce8;
+      font-size: 15px;
+    }
+
+    footer {
+      padding: 36px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 900px) {
+      .links { display: none; }
+      .section-head { display: block; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .photo-card,
+      .photo-card.feature {
+        grid-column: auto;
+        min-height: 340px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="brand" href="index.html#top">
+          <img src="logo.png" alt="Lynch Industries logo">
+          <span>LYNCH INDUSTRIES</span>
+        </a>
+        <div class="links">
+          <a href="index.html#services">Services</a>
+          <a href="index.html#quote">Request Quote</a>
+          <a href="index.html#work">Past Work</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="index.html#contact">Contact</a>
+          <a class="btn" href="tel:4843745124">484-374-5124</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap page-hero">
+      <div class="kicker">Project Gallery</div>
+      <h1>Residential and commercial work.</h1>
+      <p>Photos from HVAC, plumbing, electrical, rough-in, and mechanical work across Eastern Pennsylvania and New Jersey.</p>
+      <div class="tabs">
+        <a class="btn" href="#residential">Residential</a>
+        <a class="btn secondary" href="#commercial">Commercial</a>
+        <a class="btn secondary" href="index.html#quote">Request a Quote</a>
+      </div>
+    </div>
+
+    <section id="residential">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Residential</div>
+            <h2>Home service and installation.</h2>
+          </div>
+          <p>Clean equipment installs, crawlspace work, HVAC systems, plumbing, and finished mechanical setups.</p>
+        </div>
+        <div class="gallery-grid">
+          <a class="photo-card feature" href="images/residential-hvac-air-handler.jpeg"><img src="images/residential-hvac-air-handler.jpeg" alt="Residential HVAC air handler and ductwork"><div><span class="tag">HVAC</span><h3>Residential Air Handler & Ductwork</h3><p>Basement HVAC equipment, duct transitions, and condensate setup.</p></div></a>
+          <a class="photo-card" href="images/residential-mini-split-condenser.jpeg"><img src="images/residential-mini-split-condenser.jpeg" alt="Residential mini split condenser"><div><span class="tag">HVAC</span><h3>Mini Split Condenser</h3><p>Exterior condenser installation and line set routing.</p></div></a>
+          <a class="photo-card" href="images/residential-ac-condenser.jpg"><img src="images/residential-ac-condenser.jpg" alt="Residential AC condenser"><div><span class="tag">HVAC</span><h3>AC Condenser Installation</h3><p>Outdoor cooling equipment set on a clean pad with finished connections.</p></div></a>
+          <a class="photo-card" href="images/crawlspace-plumbing.jpg"><img src="images/crawlspace-plumbing.jpg" alt="Crawlspace plumbing rough-in"><div><span class="tag">PLUMBING</span><h3>Crawlspace Plumbing Rough-In</h3><p>DWV piping below the structure.</p></div></a>
+          <a class="photo-card" href="images/water-heater-installation.jpg"><img src="images/water-heater-installation.jpg" alt="Water heater installation"><div><span class="tag">HVAC / PLUMBING</span><h3>Mechanical Room Installation</h3><p>Finished water heater and mechanical room work.</p></div></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="commercial">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Commercial</div>
+            <h2>Project-based mechanical work.</h2>
+          </div>
+          <p>Utility, plumbing, electrical, and equipment installations for larger scopes and multi-unit projects.</p>
+        </div>
+        <div class="gallery-grid">
+          <a class="photo-card feature" href="images/commercial-tankless-water-heaters.jpeg"><img src="images/commercial-tankless-water-heaters.jpeg" alt="Commercial tankless water heater bank"><div><span class="tag">PLUMBING</span><h3>Tankless Water Heater Bank</h3><p>Multi-unit tankless water heater installation with organized gas and water piping.</p></div></a>
+          <a class="photo-card" href="images/underground-drainage-system.jpg"><img src="images/underground-drainage-system.jpg" alt="Underground drainage system"><div><span class="tag">PLUMBING</span><h3>Underground Drainage System</h3><p>Commercial underground drainage and utility piping rough-in.</p></div></a>
+          <a class="photo-card" href="images/commercial-electrical-panel.jpg"><img src="images/commercial-electrical-panel.jpg" alt="Commercial electrical panel"><div><span class="tag">ELECTRICAL</span><h3>Commercial Electrical Panel</h3><p>Distribution and panel work for a commercial project.</p></div></a>
+          <a class="photo-card" href="images/new-construction-rough-in.jpg"><img src="images/new-construction-rough-in.jpg" alt="New construction rough-in"><div><span class="tag">NEW BUILD</span><h3>New Construction Rough-In</h3><p>Below-grade plumbing and utility coordination.</p></div></a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Start Here</div>
+            <h2>Need similar work?</h2>
+          </div>
+          <p>Send the details and Lynch Industries will follow up about your project.</p>
+        </div>
+        <a class="btn" href="index.html#quote">Request a Quote</a>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">&copy; 2026 Lynch Industries. HVAC | Electrical | Plumbing.</div></footer>
+</body>
+</html>

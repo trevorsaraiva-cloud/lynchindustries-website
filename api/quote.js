@@ -1,4 +1,7 @@
 const recipients = ["lynchindustries01@gmail.com", "tsaraiva1667@gmail.com"];
+const allowedAttachmentTypes = ["image/jpeg", "image/png", "image/webp"];
+const maxAttachments = 3;
+const maxAttachmentBase64Length = 900 * 1024;
 
 function clean(value) {
   return String(value || "").trim();
@@ -30,9 +33,36 @@ export default async function handler(req, res) {
   const service = clean(req.body?.service);
   const contact = clean(req.body?.contact);
   const message = clean(req.body?.message);
+  const rawAttachments = Array.isArray(req.body?.attachments) ? req.body.attachments : [];
 
   if (!name || !phone || !message) {
     return res.status(400).json({ error: "Name, phone, and message are required" });
+  }
+
+  if (rawAttachments.length > maxAttachments) {
+    return res.status(400).json({ error: "Too many attachments" });
+  }
+
+  const attachments = [];
+
+  for (let index = 0; index < rawAttachments.length; index += 1) {
+    const attachment = rawAttachments[index];
+    const filename = clean(attachment?.filename) || `project-photo-${index + 1}.jpg`;
+    const content = clean(attachment?.content);
+    const contentType = clean(attachment?.type);
+
+    if (!allowedAttachmentTypes.includes(contentType)) {
+      return res.status(400).json({ error: "Unsupported attachment type" });
+    }
+
+    if (!content || content.length > maxAttachmentBase64Length) {
+      return res.status(400).json({ error: "Invalid attachment size" });
+    }
+
+    attachments.push({
+      filename,
+      content,
+    });
   }
 
   const submittedAt = new Date().toLocaleString("en-US", {
@@ -88,6 +118,7 @@ export default async function handler(req, res) {
         subject: `New Quote Request - ${name}`,
         text,
         html,
+        attachments,
       }),
     });
 

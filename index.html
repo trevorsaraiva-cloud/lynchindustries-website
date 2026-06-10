@@ -88,6 +88,11 @@
       border: 1px solid rgba(255, 255, 255, .15);
     }
 
+    .btn.secondary {
+      background: rgba(255, 255, 255, .06);
+      border-color: rgba(156, 202, 255, .34);
+    }
+
     .hero {
       padding: 94px 0 84px;
       display: grid;
@@ -290,6 +295,10 @@
       color: #d4dce8;
     }
 
+    .work-actions {
+      margin-top: 26px;
+    }
+
     .quote {
       display: grid;
       grid-template-columns: .8fr 1.2fr;
@@ -328,6 +337,11 @@
       background: #081120;
       color: white;
       font: inherit;
+    }
+
+    input[type="file"] {
+      padding: 11px 14px;
+      cursor: pointer;
     }
 
     textarea {
@@ -408,6 +422,7 @@
           <a href="#quote">Request Quote</a>
           <a href="#about">About</a>
           <a href="#work">Past Work</a>
+          <a href="gallery.html">Gallery</a>
           <a href="#contact">Contact</a>
           <a class="btn" href="tel:4843745124">484-374-5124</a>
         </div>
@@ -466,6 +481,7 @@
               <div><label for="address">Project Address</label><input id="address" name="address" placeholder="Town / address"></div>
               <div><label for="service">Service Needed</label><select id="service" name="service"><option>HVAC</option><option>Electrical</option><option>Plumbing</option><option>Commercial Project</option><option>Residential Project</option></select></div>
               <div><label for="contact">Preferred Contact</label><select id="contact" name="contact"><option>Phone Call</option><option>Text</option><option>Email</option></select></div>
+              <div class="full"><label for="photos">Attach Photos</label><input id="photos" name="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple><div class="note">Optional: up to 3 photos. Images are compressed before sending. Videos are not supported.</div></div>
               <div class="full"><label for="message">Describe the work</label><textarea id="message" name="message" required placeholder="Tell us what you need done..."></textarea></div>
             </div>
             <button id="quoteBtn" type="submit">Send Quote Request</button>
@@ -503,6 +519,9 @@
           <a class="project" href="images/commercial-electrical-panel.jpg"><img src="images/commercial-electrical-panel.jpg" alt="Commercial electrical panel"><div><span class="tag">ELECTRICAL</span><h3>Commercial Electrical Panel</h3><p>Distribution and panel work for a commercial project.</p></div></a>
           <a class="project" href="images/water-heater-installation.jpg"><img src="images/water-heater-installation.jpg" alt="Water heater installation"><div><span class="tag">HVAC / PLUMBING</span><h3>Water Heater Installation</h3><p>Finished mechanical room installation.</p></div></a>
         </div>
+        <div class="work-actions">
+          <a class="btn secondary" href="gallery.html">View All Work</a>
+        </div>
       </div>
     </section>
 
@@ -523,6 +542,45 @@
     const form = document.getElementById("quoteForm");
     const btn = document.getElementById("quoteBtn");
     const status = document.getElementById("formStatus");
+    const photoInput = document.getElementById("photos");
+    const maxPhotos = 3;
+    const maxPhotoSize = 12 * 1024 * 1024;
+    const maxCompressedLength = 900 * 1024;
+    const allowedPhotoTypes = ["image/jpeg", "image/png", "image/webp"];
+
+    function compressPhoto(file) {
+      return new Promise((resolve, reject) => {
+        const image = new Image();
+        const reader = new FileReader();
+        reader.onload = () => {
+          image.onload = () => {
+            const maxSide = 1400;
+            const scale = Math.min(1, maxSide / Math.max(image.width, image.height));
+            const canvas = document.createElement("canvas");
+            canvas.width = Math.round(image.width * scale);
+            canvas.height = Math.round(image.height * scale);
+
+            const context = canvas.getContext("2d");
+            context.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+            const result = canvas.toDataURL("image/jpeg", .72);
+            const content = result.includes(",") ? result.split(",").pop() : "";
+
+            if (content.length > maxCompressedLength) {
+              reject(new Error("Photo too large"));
+              return;
+            }
+
+            const filename = file.name.replace(/\.[^.]+$/, "") + ".jpg";
+            resolve({ filename, type: "image/jpeg", content });
+          };
+          image.onerror = () => reject(new Error("Photo failed to load"));
+          image.src = String(reader.result || "");
+        };
+        reader.onerror = () => reject(new Error("Photo failed to load"));
+        reader.readAsDataURL(file);
+      });
+    }
 
     form.addEventListener("submit", async function(e) {
       e.preventDefault();
@@ -532,8 +590,25 @@
       status.textContent = "Sending your quote request...";
 
       const data = Object.fromEntries(new FormData(form).entries());
+      const photos = Array.from(photoInput.files || []);
 
       try {
+        if (photos.length > maxPhotos) {
+          throw new Error("Too many photos");
+        }
+
+        for (const photo of photos) {
+          if (!allowedPhotoTypes.includes(photo.type)) {
+            throw new Error("Unsupported photo type");
+          }
+
+          if (photo.size > maxPhotoSize) {
+            throw new Error("Photo too large");
+          }
+        }
+
+        data.attachments = await Promise.all(photos.map(compressPhoto));
+
         const response = await fetch("/api/quote", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -546,7 +621,15 @@
         form.reset();
         window.location.href = "/quote-sent.html";
       } catch (err) {
-        status.textContent = "There was an error sending your request. Please call 484-374-5124 or email lynchindustries01@gmail.com.";
+        if (err.message === "Too many photos") {
+          status.textContent = "Please attach no more than 3 photos.";
+        } else if (err.message === "Unsupported photo type") {
+          status.textContent = "Please attach photos only: JPG, PNG, or WebP.";
+        } else if (err.message === "Photo too large") {
+          status.textContent = "One of the photos is too large. Please use smaller photos or send fewer at once.";
+        } else {
+          status.textContent = "There was an error sending your request. Please call 484-374-5124 or email lynchindustries01@gmail.com.";
+        }
       } finally {
         btn.disabled = false;
         btn.textContent = "Send Quote Request";
