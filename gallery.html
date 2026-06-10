@@ -223,6 +223,35 @@
       font-size: 15px;
     }
 
+    .client-group {
+      margin-top: 34px;
+    }
+
+    .client-group:first-of-type {
+      margin-top: 0;
+    }
+
+    .client-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 16px;
+    }
+
+    .client-title h3 {
+      margin: 0;
+      font-size: clamp(24px, 3vw, 34px);
+      letter-spacing: 0;
+    }
+
+    .client-title p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 520px;
+      font-size: 15px;
+    }
+
     footer {
       padding: 36px 0;
       color: var(--muted);
@@ -232,6 +261,8 @@
     @media (max-width: 900px) {
       .links { display: none; }
       .section-head { display: block; }
+      .client-title { display: block; }
+      .client-title p { margin-top: 8px; }
       .gallery-grid { grid-template-columns: 1fr; }
       .photo-card,
       .photo-card.feature {
@@ -280,14 +311,12 @@
             <div class="kicker">Residential</div>
             <h2>Home service and installation.</h2>
           </div>
-          <p>Clean equipment installs, crawlspace work, HVAC systems, plumbing, and finished mechanical setups.</p>
+          <p>Clean equipment installs, HVAC systems, and finished residential service work.</p>
         </div>
         <div class="gallery-grid">
           <a class="photo-card feature" href="images/residential-hvac-air-handler.jpeg"><img src="images/residential-hvac-air-handler.jpeg" alt="Residential HVAC air handler and ductwork"><div><span class="tag">HVAC</span><h3>Residential Air Handler & Ductwork</h3><p>Basement HVAC equipment, duct transitions, and condensate setup.</p></div></a>
           <a class="photo-card" href="images/residential-mini-split-condenser.jpeg"><img src="images/residential-mini-split-condenser.jpeg" alt="Residential mini split condenser"><div><span class="tag">HVAC</span><h3>Mini Split Condenser</h3><p>Exterior condenser installation and line set routing.</p></div></a>
           <a class="photo-card" href="images/residential-ac-condenser.jpg"><img src="images/residential-ac-condenser.jpg" alt="Residential AC condenser"><div><span class="tag">HVAC</span><h3>AC Condenser Installation</h3><p>Outdoor cooling equipment set on a clean pad with finished connections.</p></div></a>
-          <a class="photo-card" href="images/crawlspace-plumbing.jpg"><img src="images/crawlspace-plumbing.jpg" alt="Crawlspace plumbing rough-in"><div><span class="tag">PLUMBING</span><h3>Crawlspace Plumbing Rough-In</h3><p>DWV piping below the structure.</p></div></a>
-          <a class="photo-card" href="images/water-heater-installation.jpg"><img src="images/water-heater-installation.jpg" alt="Water heater installation"><div><span class="tag">HVAC / PLUMBING</span><h3>Mechanical Room Installation</h3><p>Finished water heater and mechanical room work.</p></div></a>
         </div>
       </div>
     </section>
@@ -301,11 +330,28 @@
           </div>
           <p>Utility, plumbing, electrical, and equipment installations for larger scopes and multi-unit projects.</p>
         </div>
-        <div class="gallery-grid">
-          <a class="photo-card feature" href="images/commercial-tankless-water-heaters.jpeg"><img src="images/commercial-tankless-water-heaters.jpeg" alt="Commercial tankless water heater bank"><div><span class="tag">PLUMBING</span><h3>Tankless Water Heater Bank</h3><p>Multi-unit tankless water heater installation with organized gas and water piping.</p></div></a>
-          <a class="photo-card" href="images/underground-drainage-system.jpg"><img src="images/underground-drainage-system.jpg" alt="Underground drainage system"><div><span class="tag">PLUMBING</span><h3>Underground Drainage System</h3><p>Commercial underground drainage and utility piping rough-in.</p></div></a>
-          <a class="photo-card" href="images/commercial-electrical-panel.jpg"><img src="images/commercial-electrical-panel.jpg" alt="Commercial electrical panel"><div><span class="tag">ELECTRICAL</span><h3>Commercial Electrical Panel</h3><p>Distribution and panel work for a commercial project.</p></div></a>
-          <a class="photo-card" href="images/new-construction-rough-in.jpg"><img src="images/new-construction-rough-in.jpg" alt="New construction rough-in"><div><span class="tag">NEW BUILD</span><h3>New Construction Rough-In</h3><p>Below-grade plumbing and utility coordination.</p></div></a>
+        <div class="client-group">
+          <div class="client-title">
+            <h3>7 Brew project work</h3>
+            <p>Commercial new-build plumbing, rough-in, and utility coordination for drive-thru coffee locations.</p>
+          </div>
+          <div class="gallery-grid">
+            <a class="photo-card feature" href="images/crawlspace-plumbing.jpg"><img src="images/crawlspace-plumbing.jpg" alt="7 Brew commercial crawlspace plumbing rough-in"><div><span class="tag">7 BREW</span><h3>Commercial Plumbing Rough-In</h3><p>DWV piping and below-structure plumbing support for a 7 Brew project.</p></div></a>
+            <a class="photo-card" href="images/new-construction-rough-in.jpg"><img src="images/new-construction-rough-in.jpg" alt="7 Brew new construction rough-in"><div><span class="tag">7 BREW</span><h3>New Construction Rough-In</h3><p>Below-grade plumbing and utility coordination for a new-build scope.</p></div></a>
+            <a class="photo-card" href="images/underground-drainage-system.jpg"><img src="images/underground-drainage-system.jpg" alt="Commercial underground drainage system"><div><span class="tag">PLUMBING</span><h3>Underground Drainage System</h3><p>Commercial underground drainage and utility piping rough-in.</p></div></a>
+            <a class="photo-card" href="images/commercial-electrical-panel.jpg"><img src="images/commercial-electrical-panel.jpg" alt="Commercial electrical panel"><div><span class="tag">ELECTRICAL</span><h3>Commercial Electrical Panel</h3><p>Distribution and panel work for a commercial project.</p></div></a>
+          </div>
+        </div>
+
+        <div class="client-group">
+          <div class="client-title">
+            <h3>Petco service work</h3>
+            <p>Commercial mechanical and plumbing support for retail service locations.</p>
+          </div>
+          <div class="gallery-grid">
+            <a class="photo-card feature" href="images/water-heater-installation.jpg"><img src="images/water-heater-installation.jpg" alt="Petco commercial mechanical room installation"><div><span class="tag">PETCO</span><h3>Commercial Mechanical Room</h3><p>Finished water heater and mechanical room support for a retail location.</p></div></a>
+            <a class="photo-card" href="images/commercial-tankless-water-heaters.jpeg"><img src="images/commercial-tankless-water-heaters.jpeg" alt="Commercial tankless water heater bank"><div><span class="tag">PLUMBING</span><h3>Tankless Water Heater Bank</h3><p>Multi-unit tankless water heater installation with organized gas and water piping.</p></div></a>
+          </div>
         </div>
       </div>
     </section>
