@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Financing Options | Lynch Industries</title>
+  <style>
+    :root { --bg:#07111f; --text:#f6f8fb; --muted:#aab4c3; --line:#263447; --blue:#58a6ff; --gold:#f4b73e; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:radial-gradient(circle at top left,#14243b 0,#07111f 38%,#05070b 100%); color:var(--text); font-family:Inter,Arial,sans-serif; line-height:1.5; }
+    .wrap { width:min(1120px,92%); margin:auto; }
+    header { position:sticky; top:0; z-index:10; background:rgba(5,8,13,.78); backdrop-filter:blur(14px); border-bottom:1px solid var(--line); }
+    nav { height:76px; display:flex; align-items:center; justify-content:space-between; }
+    .brand { display:flex; align-items:center; gap:12px; font-weight:900; letter-spacing:.04em; color:white; text-decoration:none; }
+    .brand img { width:52px; height:52px; border-radius:12px; object-fit:cover; }
+    .links { display:flex; gap:22px; align-items:center; }
+    .links a, footer a { color:#dbe5f2; text-decoration:none; font-weight:800; font-size:14px; }
+    .btn { display:inline-block; background:linear-gradient(135deg,var(--blue),#1d6fd7); color:white!important; padding:12px 18px; border-radius:999px; text-decoration:none; font-weight:900; border:1px solid rgba(255,255,255,.15); }
+    .btn.secondary { background:rgba(255,255,255,.06); border-color:rgba(156,202,255,.34); }
+    .hero { padding:88px 0 54px; }
+    .kicker { color:#9ccaff; font-size:13px; font-weight:900; letter-spacing:.22em; text-transform:uppercase; }
+    h1 { font-size:clamp(44px,6vw,78px); line-height:1.05; margin:18px 0; letter-spacing:-.04em; }
+    h2 { font-size:clamp(30px,4vw,48px); line-height:1.08; margin:0 0 18px; letter-spacing:-.03em; }
+    p { color:var(--muted); font-size:18px; max-width:760px; }
+    section { padding:72px 0; border-top:1px solid rgba(255,255,255,.08); }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .card { padding:26px; border:1px solid var(--line); border-radius:26px; background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02)); }
+    .card h3 { margin:14px 0 8px; font-size:24px; }
+    .card p { margin:0; font-size:15px; }
+    .icon { display:inline-flex; min-width:48px; height:34px; padding:0 10px; align-items:center; justify-content:center; border-radius:999px; background:rgba(244,183,62,.14); border:1px solid rgba(244,183,62,.3); color:#ffd37a; font-weight:950; font-size:12px; }
+    .cta { padding:34px; border:1px solid rgba(156,202,255,.24); border-radius:28px; background:rgba(255,255,255,.045); }
+    footer { padding:36px 0; color:var(--muted); border-top:1px solid var(--line); }
+    @media(max-width:850px){ .links{display:none;} .grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><nav><a class="brand" href="index.html#top"><img src="logo.png" alt="Lynch Industries logo"><span>LYNCH INDUSTRIES</span></a><div class="links"><a href="index.html#services">Services</a><a href="special-offers.html">Offers</a><a href="maintenance.html">Maintenance</a><a href="service-areas.html">Service Areas</a><a class="btn" href="index.html#quote">Request Quote</a></div></nav></div></header>
+  <main>
+    <div class="wrap hero"><div class="kicker">Financing Options</div><h1>Plan bigger work with less guesswork.</h1><p>Equipment replacements, larger repairs, and project scopes can be easier to plan when payment options are discussed early. Financing availability can vary by job type and approval, so the best first step is to send the details.</p><p><a class="btn" href="index.html#quote">Ask about financing</a> <a class="btn secondary" href="tel:4843745124">Call 484-374-5124</a></p></div>
+    <section><div class="wrap grid"><div class="card"><div class="icon">HVAC</div><h3>Equipment replacement</h3><p>Ask about options when replacing heating, cooling, or comfort equipment.</p></div><div class="card"><div class="icon">BUILD</div><h3>Project scopes</h3><p>Useful for larger residential or commercial scopes that need planning before work begins.</p></div><div class="card"><div class="icon">QUOTE</div><h3>Clear next step</h3><p>Send project details and photos so the team can review what financing conversation makes sense.</p></div></div></section>
+    <section><div class="wrap cta"><div class="kicker">Start Here</div><h2>Send the job details first.</h2><p>Lynch Industries can review the scope and follow up with next steps, pricing context, and any available payment-planning options.</p><a class="btn" href="index.html#quote">Request a Quote</a></div></section>
+  </main>
+  <footer><div class="wrap">© 2026 Lynch Industries. <a href="index.html">Home</a></div></footer>
+</body>
+</html>
