@@ -31,6 +31,27 @@
       margin: auto;
     }
 
+    .top-strip {
+      background: linear-gradient(90deg, rgba(88, 166, 255, .18), rgba(244, 183, 62, .14));
+      border-bottom: 1px solid rgba(255, 255, 255, .09);
+      color: #eaf2ff;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .top-strip .wrap {
+      min-height: 38px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .top-strip a {
+      color: white;
+      text-decoration: none;
+    }
+
     header {
       position: sticky;
       top: 0;
@@ -228,6 +249,144 @@
     }
 
     .card p { color: var(--muted); }
+
+    .card ul {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      color: #d4dce8;
+      font-size: 14px;
+    }
+
+    .card li::before {
+      content: "+";
+      color: var(--gold);
+      font-weight: 950;
+      margin-right: 8px;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 20px;
+      color: #9ccaff;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .trust-band {
+      padding: 0 0 80px;
+      border-top: 0;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .trust-item {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, .035);
+    }
+
+    .trust-item b {
+      display: block;
+      font-size: 26px;
+      color: white;
+      line-height: 1;
+    }
+
+    .trust-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    .split-feature {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .feature-panel {
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(255, 255, 255, .04);
+    }
+
+    .feature-panel p {
+      color: var(--muted);
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .feature-row {
+      padding: 16px;
+      border: 1px solid rgba(156, 202, 255, .18);
+      border-radius: 18px;
+      background: rgba(5, 9, 15, .38);
+    }
+
+    .feature-row b {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .feature-row span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .process-grid,
+    .area-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .process-step,
+    .area-card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .052), rgba(255, 255, 255, .018));
+    }
+
+    .step-number {
+      display: inline-flex;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(244, 183, 62, .16);
+      border: 1px solid rgba(244, 183, 62, .32);
+      color: #ffd37a;
+      font-weight: 950;
+    }
+
+    .process-step h3,
+    .area-card h3 {
+      margin: 18px 0 8px;
+      font-size: 22px;
+    }
+
+    .process-step p,
+    .area-card p {
+      color: var(--muted);
+      margin: 0;
+    }
 
     .experience {
       position: relative;
@@ -568,12 +727,31 @@
     }
 
     footer {
-      padding: 36px 0;
+      padding: 46px 0;
       color: var(--muted);
       border-top: 1px solid var(--line);
+      background: rgba(5, 8, 13, .72);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 24px;
+    }
+
+    footer a {
+      color: #9ccaff;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 8px;
     }
 
     @media (max-width: 850px) {
+      .top-strip .wrap { display: block; padding: 10px 0; }
       .links { display: none; }
       .hero,
       .quote { grid-template-columns: 1fr; }
@@ -593,7 +771,12 @@
       .cards,
       .gallery { grid-template-columns: 1fr; }
       .experience-grid,
-      .brand-wall { grid-template-columns: 1fr; }
+      .brand-wall,
+      .trust-grid,
+      .split-feature,
+      .process-grid,
+      .area-grid,
+      .footer-grid { grid-template-columns: 1fr; }
       .project.big { min-height: 360px; }
       .grid { grid-template-columns: 1fr; }
       .section-head { display: block; }
@@ -601,6 +784,12 @@
   </style>
 </head>
 <body>
+  <div class="top-strip">
+    <div class="wrap">
+      <span>Tri-state HVAC, electrical, and plumbing support for homes, businesses, and new builds.</span>
+      <a href="tel:4843745124">Call 484-374-5124</a>
+    </div>
+  </div>
   <header>
     <div class="wrap">
       <nav>
@@ -649,9 +838,73 @@
           <p>Clean communication, professional field work, and dependable support for commercial and residential projects.</p>
         </div>
         <div class="cards">
-          <div class="card"><div class="icon">HVAC</div><h3>HVAC</h3><p>Heating, cooling, air conditioning, no-cool calls, equipment swaps, ductwork, maintenance, and service repair.</p></div>
-          <div class="card"><div class="icon">ELEC</div><h3>Electrical</h3><p>Service calls, outlets, switches, lighting, panels, troubleshooting, rough-ins, and finish work.</p></div>
-          <div class="card"><div class="icon">PLUMB</div><h3>Plumbing</h3><p>Leak repairs, fixtures, water heaters, drains, underground utilities, rough-ins, finals, service, and repairs.</p></div>
+          <div class="card" id="hvac">
+            <div class="icon">HVAC</div>
+            <h3>HVAC</h3>
+            <p>Heating, cooling, air conditioning, no-cool calls, equipment swaps, ductwork, maintenance, and service repair.</p>
+            <ul>
+              <li>AC and heat repair</li>
+              <li>Equipment replacement</li>
+              <li>Ductwork and airflow</li>
+            </ul>
+            <a href="#quote">Request HVAC help</a>
+          </div>
+          <div class="card" id="electrical">
+            <div class="icon">ELEC</div>
+            <h3>Electrical</h3>
+            <p>Service calls, outlets, switches, lighting, panels, troubleshooting, rough-ins, and finish work.</p>
+            <ul>
+              <li>Panels and service work</li>
+              <li>Lighting and devices</li>
+              <li>Commercial rough-ins</li>
+            </ul>
+            <a href="#quote">Request electrical help</a>
+          </div>
+          <div class="card" id="plumbing">
+            <div class="icon">PLUMB</div>
+            <h3>Plumbing</h3>
+            <p>Leak repairs, fixtures, water heaters, drains, underground utilities, rough-ins, finals, service, and repairs.</p>
+            <ul>
+              <li>Leaks and fixture repairs</li>
+              <li>Water heater work</li>
+              <li>Underground and rough-in piping</li>
+            </ul>
+            <a href="#quote">Request plumbing help</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-band">
+      <div class="wrap trust-grid">
+        <div class="trust-item"><b>3</b><span>Trades coordinated under one dependable team.</span></div>
+        <div class="trust-item"><b>2</b><span>National brand environments represented in project experience.</span></div>
+        <div class="trust-item"><b>3</b><span>Tri-state service area: PA, NJ, and Delaware.</span></div>
+        <div class="trust-item"><b>1</b><span>Simple quote form with photo uploads.</span></div>
+      </div>
+    </section>
+
+    <section id="capabilities">
+      <div class="wrap split-feature">
+        <div class="feature-panel">
+          <div class="kicker">Residential</div>
+          <h2>Service calls that stay practical.</h2>
+          <p>When something is down, leaking, tripping, or not working right, the goal is a clear answer and a clean repair path.</p>
+          <div class="feature-list">
+            <div class="feature-row"><b>Comfort systems</b><span>No-cool calls, air conditioning, heating, equipment swaps, and duct issues.</span></div>
+            <div class="feature-row"><b>Home plumbing</b><span>Leaks, fixtures, water heaters, drains, and repair work.</span></div>
+            <div class="feature-row"><b>Electrical service</b><span>Outlets, switches, lighting, troubleshooting, panels, and finish work.</span></div>
+          </div>
+        </div>
+        <div class="feature-panel">
+          <div class="kicker">Commercial</div>
+          <h2>Project support for bigger scopes.</h2>
+          <p>For new builds, retail locations, and project-based work, Lynch Industries can support rough-ins, finals, service calls, and coordination across trades.</p>
+          <div class="feature-list">
+            <div class="feature-row"><b>New construction</b><span>Plumbing, electrical, rough-ins, finishes, and utility coordination.</span></div>
+            <div class="feature-row"><b>Retail service</b><span>Mechanical, plumbing, and electrical support for active commercial spaces.</span></div>
+            <div class="feature-row"><b>Field communication</b><span>Photo-based requests help the team understand the job before the first call.</span></div>
+          </div>
         </div>
       </div>
     </section>
@@ -704,6 +957,23 @@
       </div>
     </section>
 
+    <section id="process">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">How It Works</div>
+            <h2>Simple from first request to finished work.</h2>
+          </div>
+          <p>A straightforward request flow keeps the details organized and makes it easier to follow up with the right next step.</p>
+        </div>
+        <div class="process-grid">
+          <div class="process-step"><span class="step-number">1</span><h3>Send the details</h3><p>Use the quote form, choose the trade, and attach up to three photos when helpful.</p></div>
+          <div class="process-step"><span class="step-number">2</span><h3>Review the scope</h3><p>The team receives your request by email and can review the project type, location, and photos.</p></div>
+          <div class="process-step"><span class="step-number">3</span><h3>Plan the next step</h3><p>Lynch Industries follows up for scheduling, pricing, site details, or additional project information.</p></div>
+        </div>
+      </div>
+    </section>
+
     <section id="work">
       <div class="wrap">
         <div class="section-head">
@@ -722,6 +992,23 @@
         </div>
         <div class="work-actions">
           <a class="btn secondary" href="gallery.html">View All Work</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="areas">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Service Area</div>
+            <h2>Serving the tri-state region.</h2>
+          </div>
+          <p>Residential, commercial, and project-based support across Eastern Pennsylvania, New Jersey, and Delaware.</p>
+        </div>
+        <div class="area-grid">
+          <div class="area-card"><div class="icon">PA</div><h3>Eastern Pennsylvania</h3><p>Home service calls, commercial locations, new builds, and project work.</p></div>
+          <div class="area-card"><div class="icon">NJ</div><h3>New Jersey</h3><p>HVAC, electrical, plumbing, and commercial service support throughout the region.</p></div>
+          <div class="area-card"><div class="icon">DE</div><h3>Delaware</h3><p>Tri-state coverage for service needs, jobsite support, and project-based scopes.</p></div>
         </div>
       </div>
     </section>
@@ -757,7 +1044,34 @@
     </section>
   </main>
 
-  <footer><div class="wrap">&copy; 2026 Lynch Industries. HVAC | Electrical | Plumbing.</div></footer>
+  <footer>
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand" href="#top">
+          <img src="logo.png" alt="Lynch Industries logo">
+          <span>LYNCH INDUSTRIES</span>
+        </a>
+        <p>HVAC, electrical, and plumbing support for residential, commercial, and new-build work across Eastern Pennsylvania, New Jersey, and Delaware.</p>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <div class="footer-links">
+          <a href="#services">Services</a>
+          <a href="#capabilities">Residential & Commercial</a>
+          <a href="gallery.html">Project Gallery</a>
+          <a href="#areas">Service Area</a>
+        </div>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <div class="footer-links">
+          <a href="tel:4843745124">484-374-5124</a>
+          <a href="mailto:lynchindustries01@gmail.com">lynchindustries01@gmail.com</a>
+          <a href="#quote">Request a Quote</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <script>
     const form = document.getElementById("quoteForm");
