@@ -349,14 +349,16 @@
     }
 
     .process-grid,
-    .area-grid {
+    .area-grid,
+    .promo-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
     }
 
     .process-step,
-    .area-card {
+    .area-card,
+    .promo-card {
       padding: 24px;
       border: 1px solid var(--line);
       border-radius: 24px;
@@ -377,15 +379,31 @@
     }
 
     .process-step h3,
-    .area-card h3 {
+    .area-card h3,
+    .promo-card h3 {
       margin: 18px 0 8px;
       font-size: 22px;
     }
 
     .process-step p,
-    .area-card p {
+    .area-card p,
+    .promo-card p {
       color: var(--muted);
       margin: 0;
+    }
+
+    .promo-card {
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .promo-card a {
+      margin-top: 22px;
+      color: #9ccaff;
+      font-weight: 900;
+      text-decoration: none;
     }
 
     .experience {
@@ -776,6 +794,7 @@
       .split-feature,
       .process-grid,
       .area-grid,
+      .promo-grid,
       .footer-grid { grid-template-columns: 1fr; }
       .project.big { min-height: 360px; }
       .grid { grid-template-columns: 1fr; }
@@ -787,7 +806,7 @@
   <div class="top-strip">
     <div class="wrap">
       <span>Tri-state HVAC, electrical, and plumbing support for homes, businesses, and new builds.</span>
-      <a href="tel:4843745124">Call 484-374-5124</a>
+      <span><a href="financing.html">Financing</a> &nbsp;|&nbsp; <a href="special-offers.html">Special Offers</a> &nbsp;|&nbsp; <a href="maintenance.html">Maintenance</a></span>
     </div>
   </div>
   <header>
@@ -799,6 +818,7 @@
         </a>
         <div class="links">
           <a href="#services">Services</a>
+          <a href="#options">Options</a>
           <a href="#quote">Request Quote</a>
           <a href="#about">About</a>
           <a href="#work">Past Work</a>
@@ -881,6 +901,44 @@
         <div class="trust-item"><b>2</b><span>National brand environments represented in project experience.</span></div>
         <div class="trust-item"><b>3</b><span>Tri-state service area: PA, NJ, and Delaware.</span></div>
         <div class="trust-item"><b>1</b><span>Simple quote form with photo uploads.</span></div>
+      </div>
+    </section>
+
+    <section id="options">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Helpful Options</div>
+            <h2>More ways to plan the work.</h2>
+          </div>
+          <p>Explore practical options for larger jobs, seasonal service, maintenance planning, and tri-state coverage before sending a quote request.</p>
+        </div>
+        <div class="promo-grid">
+          <div class="promo-card">
+            <div>
+              <div class="icon">PAY</div>
+              <h3>Financing Options</h3>
+              <p>For bigger equipment replacements or project scopes, ask about available payment and planning options.</p>
+            </div>
+            <a href="financing.html">View financing info</a>
+          </div>
+          <div class="promo-card">
+            <div>
+              <div class="icon">DEALS</div>
+              <h3>Special Offers</h3>
+              <p>Check current seasonal service offers and project promos before requesting work.</p>
+            </div>
+            <a href="special-offers.html">See current offers</a>
+          </div>
+          <div class="promo-card">
+            <div>
+              <div class="icon">PLAN</div>
+              <h3>Maintenance Planning</h3>
+              <p>Keep HVAC, plumbing, and electrical items easier to track with recurring service planning.</p>
+            </div>
+            <a href="maintenance.html">Explore maintenance</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1058,8 +1116,11 @@
         <div class="footer-links">
           <a href="#services">Services</a>
           <a href="#capabilities">Residential & Commercial</a>
+          <a href="financing.html">Financing</a>
+          <a href="special-offers.html">Special Offers</a>
+          <a href="maintenance.html">Maintenance</a>
           <a href="gallery.html">Project Gallery</a>
-          <a href="#areas">Service Area</a>
+          <a href="service-areas.html">Service Areas</a>
         </div>
       </div>
       <div>
