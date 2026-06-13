@@ -353,15 +353,87 @@
     }
 
     .process-grid,
-    .area-grid,
     .promo-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
     }
 
+    .area-layout {
+      display: grid;
+      grid-template-columns: 1fr .95fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .coverage-copy,
+    .coverage-panel {
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .052), rgba(255, 255, 255, .018));
+    }
+
+    .coverage-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 330px;
+    }
+
+    .coverage-copy h2 {
+      margin-bottom: 18px;
+    }
+
+    .coverage-copy p {
+      max-width: 620px;
+      margin-bottom: 0;
+    }
+
+    .service-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .service-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 8px 13px;
+      border: 1px solid rgba(156, 202, 255, .28);
+      border-radius: 999px;
+      background: rgba(88, 166, 255, .11);
+      color: #d8ecff;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .coverage-panel {
+      display: grid;
+      gap: 14px;
+    }
+
+    .coverage-row {
+      padding: 18px;
+      border: 1px solid rgba(156, 202, 255, .16);
+      border-radius: 18px;
+      background: rgba(5, 9, 15, .28);
+    }
+
+    .coverage-row b {
+      display: block;
+      color: white;
+      margin-bottom: 6px;
+    }
+
+    .coverage-row span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
     .process-step,
-    .area-card,
     .promo-card {
       padding: 24px;
       border: 1px solid var(--line);
@@ -383,14 +455,12 @@
     }
 
     .process-step h3,
-    .area-card h3,
     .promo-card h3 {
       margin: 18px 0 8px;
       font-size: 22px;
     }
 
     .process-step p,
-    .area-card p,
     .promo-card p {
       color: var(--muted);
       margin: 0;
@@ -796,7 +866,7 @@
       .brand-wall,
       .split-feature,
       .process-grid,
-      .area-grid,
+      .area-layout,
       .promo-grid,
       .footer-grid { grid-template-columns: 1fr; }
       .project.big { min-height: 360px; }
@@ -1050,18 +1120,24 @@
     </section>
 
     <section id="areas">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Service Area</div>
-            <h2>Serving the tri-state region.</h2>
+      <div class="wrap area-layout">
+        <div class="coverage-copy">
+          <div class="kicker">Service Area</div>
+          <h2>One team for HVAC, electrical, and plumbing across the tri-state region.</h2>
+          <p>Lynch Industries supports homes, businesses, service calls, new builds, and project work throughout Eastern Pennsylvania, New Jersey, and Delaware.</p>
+          <div class="service-pills" aria-label="Services and coverage">
+            <span class="service-pill">HVAC</span>
+            <span class="service-pill">Electrical</span>
+            <span class="service-pill">Plumbing</span>
+            <span class="service-pill">Residential</span>
+            <span class="service-pill">Commercial</span>
+            <span class="service-pill">New Builds</span>
           </div>
-          <p>Residential, commercial, and project-based support across Eastern Pennsylvania, New Jersey, and Delaware.</p>
         </div>
-        <div class="area-grid">
-          <div class="area-card"><div class="icon">PA</div><h3>Eastern Pennsylvania</h3><p>Home service calls, commercial locations, new builds, and project work.</p></div>
-          <div class="area-card"><div class="icon">NJ</div><h3>New Jersey</h3><p>HVAC, electrical, plumbing, and commercial service support throughout the region.</p></div>
-          <div class="area-card"><div class="icon">DE</div><h3>Delaware</h3><p>Tri-state coverage for service needs, jobsite support, and project-based scopes.</p></div>
+        <div class="coverage-panel" aria-label="Coverage details">
+          <div class="coverage-row"><b>Coverage</b><span>Eastern Pennsylvania, New Jersey, and Delaware.</span></div>
+          <div class="coverage-row"><b>Work Types</b><span>Service calls, repairs, replacements, rough-ins, finish work, and project coordination.</span></div>
+          <div class="coverage-row"><b>Common Local Areas</b><span>Conshohocken, King of Prussia, Norristown, Plymouth Meeting, Collegeville, and nearby communities.</span></div>
         </div>
       </div>
     </section>
